@@ -1,0 +1,17 @@
+{
+  "name": "unleash-express",
+  "version": "0.1.0",
+  "description": "express helper injector for unleash",
+  "main": "lib/unleash-express.js",
+  "scripts": {
+    "test": "NODE_ENV=test ava lib/*.test.js test/*.test.js"
+  },
+  "author": "Juan Hoyos (juan.hoyosr@gmail.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.25.0"
+  },
+  "dependencies": {
+    "unleash-client": "^3.1.0"
+  }
+}
