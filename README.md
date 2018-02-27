@@ -37,7 +37,7 @@ req.unleash.experiment('feature', ...);
 
 Peek the persisted results:
 ```js
-req.unleash.results['feature'].variant.name; // 'hope-is-a-winner'
+req.unleash.results['feature']; // Variant object or null
 ```
 
 ## Acknowledgment
