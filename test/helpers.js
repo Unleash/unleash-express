@@ -1,14 +1,13 @@
+const { UnleashExpress } = require('../lib/unleash-express');
+const express = require('express');
+const supertest = require('supertest');
+const cookieParser = require('cookie-parser');
+
 class Unleash {
     constructor(features = {}) {
         this.features = features;
     }
 
-    experiment(feature) {
-        return this.features[feature].variant;
-    }
-}
-
-class UnleashMultiVariants extends Unleash {
     experiment(feature) {
         const feat = this.features[feature];
         let variant;
@@ -27,5 +26,24 @@ class UnleashMultiVariants extends Unleash {
     }
 }
 
+function setupApp(options = {}) {
+    const unleash = options.unleash || new Unleash();
+    const unleashExpress = new UnleashExpress(unleash);
+
+    const app = express();
+    app.use(cookieParser());
+    app.use(unleashExpress.middleware());
+    app.use((err, req, res, next) => {
+        console.error(err.stack);
+    });
+
+    const request = supertest;
+
+    return {
+        app,
+        request,
+    }
+}
+
 module.exports.Unleash = Unleash;
-module.exports.UnleashMultiVariants = UnleashMultiVariants;
+module.exports.setupApp = setupApp;

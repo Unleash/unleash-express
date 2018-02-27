@@ -1,6 +1,6 @@
 # unleash-express
 
-unleash-client decorator to help persisting feature toggles' results over express
+unleash-client that helps persisting feature toggle results over Express.js
 
 ## Configuration
 
@@ -29,12 +29,9 @@ app.use(unleashExpress.middleware()); // This will allow reading/setting the coo
 Ask `unleash-client` for the value of a feature as usual by using `experiment`.
 
 ```js
-// In feature.controller.js
-const { experiment } = require('unleash-client');
-experiment('feature', ...);
+// In your feature.controller.js
+req.unleash.experiment('feature', ...);
 ```
-
-The resulting values are set in the `request` object for later reuse.
 
 ### 3. Reuse the result along the pipeline
 
