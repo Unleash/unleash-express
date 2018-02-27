@@ -14,7 +14,7 @@
     "express": "^4.16.2",
     "supertest": "^3.0.0"
   },
-  "dependencies": {
-    "unleash-client": "^3.1.0"
+  "peerDependencies": {
+    "unleash-client": "elhoyos/unleash-client-node#variations"
   }
 }
