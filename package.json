@@ -15,6 +15,6 @@
     "supertest": "^3.0.0"
   },
   "peerDependencies": {
-    "unleash-client": "elhoyos/unleash-client-node#07f8a408"
+    "unleash-client": "elhoyos/unleash-client-node#semver:^3.0.0-alpha.0"
   }
 }
