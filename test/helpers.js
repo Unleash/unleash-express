@@ -8,6 +8,10 @@ class Unleash {
         this.features = features;
     }
 
+    getToggles() {
+        return this.features;
+    }
+
     experiment(feature) {
         const feat = this.features[feature];
         let variant;
