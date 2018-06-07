@@ -33,6 +33,13 @@ Ask `unleash-client` for the value of a feature as usual by using `experiment`.
 req.unleash.experiment('feature', ...);
 ```
 
+You can also check alternatives or features that are enabled by using `isEnabled`.
+
+```js
+// In your controller
+req.unleash.isEnabled('alternative');
+```
+
 ### 3. Reuse the result along the pipeline
 
 Peek the persisted results:
