@@ -28,6 +28,11 @@ class Unleash {
 
         return variant;
     }
+
+    isEnabled() {
+        const features = this.features.features;
+        return features.some((el) => el.enabled)
+    }
 }
 
 function setupApp(options = {}) {
