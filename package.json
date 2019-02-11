@@ -1,13 +1,13 @@
 {
   "name": "unleash-express",
-  "version": "0.1.6",
-  "description": "express helper injector for unleash",
+  "version": "0.1.8",
+  "description": "express helper for unleash",
   "main": "lib/unleash-express.js",
   "scripts": {
     "test": "NODE_ENV=test ava lib/*.test.js test/*.test.js"
   },
   "author": "Juan Hoyos (juan.hoyosr@gmail.com)",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "ava": "^0.25.0",
     "cookie-parser": "^1.4.3",
@@ -16,5 +16,7 @@
   },
   "peerDependencies": {
     "unleash-client": "elhoyos/unleash-client-node#semver:^3.3.11"
-  }
+  },
+  "repository": "https://github.com/Unleash/unleash-express",
+  "private": false
 }
