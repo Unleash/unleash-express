@@ -29,9 +29,9 @@ class Unleash {
         return variant;
     }
 
-    isEnabled() {
+    isEnabled(name) {
         const features = this.features.features;
-        return features.some((el) => el.enabled)
+        return features.some((el) => el.name === name && el.enabled === true);
     }
 }
 
