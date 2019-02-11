@@ -12,15 +12,16 @@ class Unleash {
         return this.features;
     }
 
-    experiment(feature) {
-        const feat = this.features[feature];
+    experiment(name) {
+        const features = this.features.features;
+        const feature = features.find(f => f.name === name && f.enabled === true);
         let variant;
 
-        if (feat.variants) {
-            feat.currentVariantIndex = feat.currentVariantIndex || 0;
-            variant = feat.variants[feat.currentVariantIndex];
-            if (feat.currentVariantIndex + 1 < feat.variants.length) {
-                feat.currentVariantIndex++;
+        if (feature && feature.variants) {
+            feature.currentVariantIndex = feature.currentVariantIndex || 0;
+            variant = feature.variants[feature.currentVariantIndex];
+            if (feature.currentVariantIndex + 1 < feature.variants.length) {
+                feature.currentVariantIndex++;
             }
         }
 
@@ -29,7 +30,7 @@ class Unleash {
 
     isEnabled(name) {
         const features = this.features.features;
-        return features.some((el) => el.name === name && el.enabled === true);
+        return features.some(f => f.name === name && f.enabled === true);
     }
 }
 
