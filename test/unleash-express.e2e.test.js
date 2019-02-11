@@ -3,7 +3,7 @@ import { setupApp, Unleash } from './helpers';
 
 const cookieValue = (obj) => encodeURIComponent(`j:${JSON.stringify(obj)}`);
 
-test('should give persisted results across requests', async t => {
+test('should return the persisted results across requests from the same client', async t => {
     t.plan(0);
     const unleash = new Unleash({
         feature: {
@@ -11,8 +11,8 @@ test('should give persisted results across requests', async t => {
         },
     });
 
-    let { app, request } = setupApp({ unleash });
-    request = request.agent(app); // cookies will be persisted
+    const { app, request: _request } = setupApp({ unleash });
+    const request = _request.agent(app); // cookies will be persisted
 
     app.get('/', (req, res) => {
         res.send(req.unleash.experiment('feature').name);
@@ -31,7 +31,7 @@ test('should give persisted results across requests', async t => {
         .expect('variant_1');
 });
 
-test('should give different persisted results across requests from diff clients', async t => {
+test('should return different persisted results across requests from different clients', async t => {
     t.plan(0);
     const unleash = new Unleash({
         feature: {
@@ -39,8 +39,8 @@ test('should give different persisted results across requests from diff clients'
         },
     });
 
-    let { app, request } = setupApp({ unleash });
-    request = request(app);
+    const { app, request: _request } = setupApp({ unleash });
+    const request = _request(app);
 
     app.get('/', (req, res) => {
         res.send(req.unleash.experiment('feature').name);

@@ -22,8 +22,6 @@ class Unleash {
             if (feat.currentVariantIndex + 1 < feat.variants.length) {
                 feat.currentVariantIndex++;
             }
-        } else {
-            variant = feat.variant;
         }
 
         return variant;
