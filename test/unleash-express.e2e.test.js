@@ -121,3 +121,30 @@ test('should remove the state of an experiment from the cookie if no variant was
         .expect(200)
         .expect('set-cookie', `unleash=${cookieValue({})}; Path=/`);
 });
+
+test('should send only one set-cookie header', async t => {
+    t.plan(0);
+    const unleash = new Unleash({
+        features: [{
+            name: 'feature.A',
+            enabled: true,
+        }, {
+            name: 'feature.B',
+            enabled: true,
+        }],
+    });
+
+    const { app, request: _request } = setupApp({ unleash });
+    const request = _request.agent(app);
+
+    app.get('/', (req, res) => {
+        req.unleash.isEnabled('feature.A');
+        req.unleash.isEnabled('feature.B')
+        res.send();
+    });
+
+    await request
+        .get('/')
+        .expect(200)
+        .expect('set-cookie', `unleash=${cookieValue({ 'feature.A': true, 'feature.B': true })}; Path=/`);
+});
