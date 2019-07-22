@@ -11,12 +11,51 @@
   "devDependencies": {
     "ava": "^0.25.0",
     "cookie-parser": "^1.4.3",
+    "eslint": "^4.1.1",
+    "eslint-config-finn": "^3.0.1",
+    "eslint-config-finn-prettier": "^3.0.2",
     "express": "^4.16.2",
+    "husky": "^3.0.1",
+    "lint-staged": "^9.2.0",
+    "prettier": "^1.18.2",
     "supertest": "^3.0.0"
   },
   "peerDependencies": {
-    "unleash-client": "elhoyos/unleash-client-node#semver:^3.3.11"
+    "unleash-client": "^3.2.0"
   },
   "repository": "https://github.com/Unleash/unleash-express",
-  "private": false
+  "private": false,
+  "prettier": {
+    "printWidth": 100,
+    "proseWrap": "always",
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": "*.json",
+        "options": {
+          "tabWidth": 2
+        }
+      }
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{ts,md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "unleash-client": "^3.2.6"
+  }
 }

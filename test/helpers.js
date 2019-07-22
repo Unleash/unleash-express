@@ -41,6 +41,7 @@ function setupApp(options = {}) {
     const app = express();
     app.use(cookieParser());
     app.use(unleashExpress.middleware());
+    /* eslint-disable no-unused-vars */
     app.use((err, req, res, next) => {
         console.error(err.stack);
     });
@@ -50,7 +51,7 @@ function setupApp(options = {}) {
     return {
         app,
         request,
-    }
+    };
 }
 
 module.exports.Unleash = Unleash;
