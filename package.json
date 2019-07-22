@@ -4,6 +4,7 @@
   "description": "express helper for unleash",
   "main": "lib/unleash-express.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "NODE_ENV=test ava lib/*.test.js test/*.test.js"
   },
   "author": "Juan Hoyos (juan.hoyosr@gmail.com)",
