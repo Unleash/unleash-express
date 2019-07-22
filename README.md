@@ -1,5 +1,7 @@
 # unleash-express
 
+[![Build Status](https://travis-ci.org/Unleash/unleash-express.svg?branch=master)](https://travis-ci.org/Unleash/unleash-express)
+
 unleash-client that helps persisting feature toggle results over Express.js
 
 ## Configuration
