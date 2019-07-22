@@ -1,4 +1,4 @@
-import { test } from 'ava';
+import test from 'ava';
 import { setupApp, Unleash } from './helpers';
 
 const cookieValue = obj => encodeURIComponent(`j:${JSON.stringify(obj)}`);
