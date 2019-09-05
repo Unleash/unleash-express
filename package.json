@@ -1,6 +1,6 @@
 {
   "name": "unleash-express",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "express helper for unleash",
   "main": "lib/unleash-express.js",
   "scripts": {
