@@ -4,6 +4,15 @@
 
 unleash-client that helps persisting feature toggle results over Express.js
 
+## Prerequisite
+You will need express and [cookie-parser](https://github.com/expressjs/cookie-parser):
+
+```js
+const express = require('express');
+const app = express();
+app.use(cookieParser());
+```
+
 ## Configuration
 
 ```js
@@ -28,11 +37,11 @@ app.use(unleashExpress.middleware()); // This will allow reading/setting the coo
 
 ### 2. Flip the coin
 
-Ask `unleash-client` for the value of a feature as usual by using `experiment`.
+Ask `unleash-client` for the value of a feature as usual by using `getVariant`.
 
 ```js
 // In your feature.controller.js
-req.unleash.experiment('feature', ...);
+req.unleash.getVariant('feature', ...);
 ```
 
 You can also check alternatives or features that are enabled by using `isEnabled`.

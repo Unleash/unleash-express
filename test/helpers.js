@@ -8,11 +8,11 @@ class Unleash {
         this.features = features;
     }
 
-    getToggles() {
+    getFeatureToggleDefinitions() {
         return this.features;
     }
 
-    experiment(name) {
+    getVariant(name) {
         const features = this.features.features;
         const feature = features.find(f => f.name === name && f.enabled === true);
         let variant;
