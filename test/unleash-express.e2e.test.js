@@ -19,7 +19,7 @@ test('should return the persisted results across requests of the same client', a
     const request = _request.agent(app); // persist cookies via an agent, simulating the same client
 
     app.get('/', (req, res) => {
-        res.send(req.unleash.experiment('feature.variants.A').name);
+        res.send(req.unleash.getVariant('feature.variants.A').name);
     });
 
     await request
@@ -57,7 +57,7 @@ test('should return different persisted results across requests from different c
     const request = _request(app); // no cookies will be persisted, simulating different clients
 
     app.get('/', (req, res) => {
-        res.send(req.unleash.experiment('feature.variants.A').name);
+        res.send(req.unleash.getVariant('feature.variants.A').name);
     });
 
     await request
@@ -110,7 +110,7 @@ test('should remove the state of a feature from the cookie if not enabled', asyn
         .expect('set-cookie', `unleash=${cookieValue({})}; Path=/`);
 });
 
-test('should remove the state of an experiment from the cookie if no variant was returned', async t => {
+test('should remove the state of an getVariant from the cookie if no variant was returned', async t => {
     t.plan(0);
     const unleash = new Unleash({
         features: [
@@ -126,7 +126,7 @@ test('should remove the state of an experiment from the cookie if no variant was
     const request = _request.agent(app); // persist cookies via an agent, simulating the same client
 
     app.get('/', (req, res) => {
-        res.send(req.unleash.experiment('feature.variants.A'));
+        res.send(req.unleash.getVariant('feature.variants.A'));
     });
 
     await request

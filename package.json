@@ -1,6 +1,6 @@
 {
   "name": "unleash-express",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "express helper for unleash",
   "main": "lib/unleash-express.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "supertest": "^3.0.0"
   },
   "peerDependencies": {
-    "unleash-client": "^3.2.0"
+    "unleash-client": "^3.2.8get"
   },
   "repository": "https://github.com/Unleash/unleash-express",
   "private": false,
